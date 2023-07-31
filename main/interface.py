@@ -31,9 +31,3 @@ class HelpSystemApp:
             self.solicitacoes.append(solicitacao)
             self.lista_solicitacoes.insert(tk.END, solicitacao)
             self.entry_solicitacao.delete(0, tk.END)
-
-# Inicializar a aplicação
-if __name__ == "__main__":
-    root = tk.Tk()
-    app = HelpSystemApp(root)
-    root.mainloop()
