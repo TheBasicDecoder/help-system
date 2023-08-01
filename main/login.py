@@ -7,7 +7,6 @@ class LoginApp(tk.Tk):
         self.title("Sistema de Ajuda - Login")
         self.geometry("1080x800")
         self.state("zoomed")  # Abre maximizada
-        self.resizable(False, False)  # Impede que a janela seja redimensionada
 
         # Criar o widget do fundo
         self.fundo_label = tk.Label(self)
