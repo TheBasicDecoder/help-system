@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS conversas (
+ id int(10) NOT NULL AUTO_INCREMENT,
+ categoria int(10) NOT NULL,
+ email varchar(40) NOT NULL,
+ titulo varchar(80) NOT NULL DEFAULT 'Título...',
+ pergunta varchar(300) NOT NULL DEFAULT 'Pergunta...',
+ pontuacao int(10) NOT NULL DEFAULT 0,
+ PRIMARY KEY(id),
+ FOREIGN KEY (email) REFERENCES cadastros(email)
+ FOREIGN KEY (categoria) REFERENCES categorias(id)
+) ENGINE=InnoDB;

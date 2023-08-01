@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS comentarios (
+ id int(10) NOT NULL AUTO_INCREMENT,
+ conversa int(10) NOT NULL,
+ comentario varchar(300) NOT NULL DEFAULT 'Comentário...',
+ pontuacao int(10) NOT NULL DEFAULT 0,
+ PRIMARY KEY(id),
+ FOREIGN KEY (conversa) REFERENCES conversas(id)
+) ENGINE=InnoDB;

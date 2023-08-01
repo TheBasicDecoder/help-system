@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS cadastros (
+ email varchar(40) NOT NULL,
+ nome varchar(30) NOT NULL,
+ senha varchar(50) NOT NULL DEFAULT 'password',
+ sobre varchar(100) DEFAULT 'Sobre...',
+ setor int(10) NOT NULL DEFAULT 1,
+ pontuacao int(10) NOT NULL DEFAULT 0,
+ PRIMARY KEY(email)
+) ENGINE=InnoDB;
