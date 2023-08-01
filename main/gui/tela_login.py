@@ -1,5 +1,12 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
+import mysql.connector as mysql
+
+cnct = mysql.connect(host="localhost",user="root",port="3306",password=" ",database="inserir nome do database aqui")
+# Dados padrão ao criar um database
+# Modificar os dados de acordo com o banco de dados usado
+
+c = cnct.cursor()
 
 class Tela_Login(tk.Tk):
     def __init__(self):
@@ -64,12 +71,15 @@ class Tela_Login(tk.Tk):
     def login(self):
         username = self.username_entry.get()
         password = self.password_entry.get()
-        # Aqui adicionar a lógica para verificar o login
-        # Por exemplo, verificar se o usuário e senha são válidos
-        if username == "seu_usuario" and password == "sua_senha":
+        vals = (username,password,)
+        select = "SELECT * FROM 'cadastros' WHERE 'email' = %s and 'senha' = %s"
+        c.execute(select,vals)
+        usuario = c.fetchone()
+        if usuario is not None:
             messagebox.showinfo("Login", "Login bem-sucedido!")
         else:
             messagebox.showerror("Login", "Nome de usuário ou senha incorretos.")
+
 
     def cadastrar(self):
         # Aqui adicionar a lógica para o cadastro de novos usuários
