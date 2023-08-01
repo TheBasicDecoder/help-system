@@ -5,7 +5,9 @@ class LoginApp(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("Sistema de Ajuda - Login")
-        self.geometry("600x400")
+        self.geometry("1080x800")
+        self.state("zoomed")  # Abre maximizada
+        self.resizable(False, False)  # Impede que a janela seja redimensionada
 
         # Criar o widget do fundo
         self.fundo_label = tk.Label(self)
@@ -23,21 +25,23 @@ class LoginApp(tk.Tk):
         self.logo_image = tk.PhotoImage(file="texturas/Tela de Login/logo_ABTech.png")
         self.logo_label.config(image=self.logo_image)
 
-        # Criar os campos de nome de usuário e senha
+        # Criar o label do rótulo "Nome de usuário"
         self.username_label = tk.Label(self, text="Nome de usuário:")
-        self.username_label.place(relx=0.35, rely=0.45, anchor="e")
+        self.username_label.place(relx=0.5, rely=0.4, anchor="center")
 
+        # Criar o campo de nome de usuário
         self.username_entry = ttk.Entry(self, width=30)
         self.username_entry.place(relx=0.5, rely=0.45, anchor="center")
         self.username_entry.insert(0, "Digite seu usuário")
 
+        # Criar o label do rótulo "Senha"
         self.password_label = tk.Label(self, text="Senha:")
-        self.password_label.place(relx=0.35, rely=0.55, anchor="e")
+        self.password_label.place(relx=0.5, rely=0.5, anchor="center")
 
+        # Criar o campo de senha
         self.password_entry = ttk.Entry(self, show="*", width=30)
         self.password_entry.place(relx=0.5, rely=0.55, anchor="center")
         self.password_entry.insert(0, "Digite sua senha")
-
 
         # Criar o botão de login
         self.login_image = tk.PhotoImage(file="texturas/Tela de Login/login.png")
@@ -53,6 +57,34 @@ class LoginApp(tk.Tk):
         self.esqueci_senha_label = tk.Label(self, text="Esqueci minha senha", fg="blue", cursor="hand2")
         self.esqueci_senha_label.place(relx=0.5, rely=0.9, anchor="center")
         self.esqueci_senha_label.bind("<Button-1>", lambda e: self.esqueci_senha())
+
+        # Vincular eventos de foco para os campos de usuário e senha
+        self.username_entry.bind("<FocusIn>", self.on_username_focus_in)
+        self.username_entry.bind("<FocusOut>", self.on_username_focus_out)
+        self.password_entry.bind("<FocusIn>", self.on_password_focus_in)
+        self.password_entry.bind("<FocusOut>", self.on_password_focus_out)
+
+    def on_username_focus_in(self, event):
+        # Limpar o campo de usuário ao clicar nele, se o texto for o texto padrão
+        if self.username_entry.get() == "Digite seu usuário":
+            self.username_entry.delete(0, tk.END)
+
+    def on_username_focus_out(self, event):
+        # Restaurar o texto padrão no campo de usuário se estiver vazio
+        if not self.username_entry.get():
+            self.username_entry.insert(0, "Digite seu usuário")
+
+    def on_password_focus_in(self, event):
+        # Limpar o campo de senha ao clicar nele, se o texto for o texto padrão
+        if self.password_entry.get() == "Digite sua senha":
+            self.password_entry.delete(0, tk.END)
+            self.password_entry.config(show="*")  # Mostrar os caracteres digitados
+
+    def on_password_focus_out(self, event):
+        # Restaurar o texto padrão no campo de senha se estiver vazio
+        if not self.password_entry.get():
+            self.password_entry.insert(0, "Digite sua senha")
+            self.password_entry.config(show="")  # Ocultar o texto digitado
 
     def login(self):
         username = self.username_entry.get()
@@ -71,13 +103,6 @@ class LoginApp(tk.Tk):
     def esqueci_senha(self):
         # adicionar a lógica para lidar com o esquecimento de senha
         messagebox.showinfo("Esqueci minha senha", "Ainda não implementado.")
-
-    def toggle_password(self):
-        # Alterna a visibilidade da senha entre visível e escondida
-        if self.password_entry.cget("show") == "":
-            self.password_entry.config(show="*")
-        else:
-            self.password_entry.config(show="")
 
 if __name__ == "__main__":
     app = LoginApp()
