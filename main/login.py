@@ -12,7 +12,7 @@ class LoginApp(tk.Tk):
         self.fundo_label.place(relx=0.5, rely=0.5, anchor="center")
 
         # Carregar imagem do fundo
-        self.fundo_image = tk.PhotoImage(file="C:/Users/neto-/help-system/main/fundo.png")
+        self.fundo_image = tk.PhotoImage(file="texturas/Tela de Login/Fundo.png")
         self.fundo_label.config(image=self.fundo_image)
 
         # Criar o widget do logo
@@ -20,7 +20,7 @@ class LoginApp(tk.Tk):
         self.logo_label.place(relx=0.5, rely=0.2, anchor="center")
 
         # Carregar imagem do logo
-        self.logo_image = tk.PhotoImage(file="C:/Users/neto-/help-system/main/logo_ABTech.png")
+        self.logo_image = tk.PhotoImage(file="texturas/Tela de Login/logo_ABTech.png")
         self.logo_label.config(image=self.logo_image)
 
         # Criar os campos de nome de usuário e senha
@@ -38,18 +38,14 @@ class LoginApp(tk.Tk):
         self.password_entry.place(relx=0.5, rely=0.55, anchor="center")
         self.password_entry.insert(0, "Digite sua senha")
 
-        # Criar o botão "eye.png" para mostrar/ocultar a senha
-        self.eye_image = tk.PhotoImage(file="C:/Users/neto-/help-system/main/eye.png")
-        self.eye_button = tk.Button(self, image=self.eye_image, command=self.toggle_password, bd=0)
-        self.eye_button.place(relx=0.82, rely=0.55, anchor="center")
 
         # Criar o botão de login
-        self.login_image = tk.PhotoImage(file="C:/Users/neto-/help-system/main/login.png")
+        self.login_image = tk.PhotoImage(file="texturas/Tela de Login/login.png")
         self.login_button = tk.Button(self, image=self.login_image, command=self.login, bd=0)
         self.login_button.place(relx=0.5, rely=0.7, anchor="center")
 
         # Criar o botão de cadastro
-        self.cadastro_image = tk.PhotoImage(file="C:/Users/neto-/help-system/main/cadastro.png")
+        self.cadastro_image = tk.PhotoImage(file="texturas/Tela de Login/cadastro.png")
         self.cadastro_button = tk.Button(self, image=self.cadastro_image, command=self.cadastrar, bd=0)
         self.cadastro_button.place(relx=0.5, rely=0.8, anchor="center")
 
