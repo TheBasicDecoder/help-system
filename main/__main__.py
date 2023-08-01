@@ -6,6 +6,7 @@ def main():
     print('Começo do aplicativo aqui')
     
     tl = Tela_Login()
+    tl.mainloop()
     
     #root = tk.Tk()
     #app = HelpSystemApp(root)
